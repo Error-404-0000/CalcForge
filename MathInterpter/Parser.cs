@@ -13,7 +13,7 @@ public static partial class Parser
             }
             else
             {
-                var GetTokenType = ValueContainer.GetContainerValue(typeof(TokenType), StringTokens[i]);
+                var GetTokenType = ValueContainerAttribute.GetContainerValue(typeof(TokenType), StringTokens[i]);
                 if (GetTokenType is (_, null))
                     throw new Exception($"{string.Join("", StringTokens)}  : Invalid TokenType '{StringTokens[i]}'");
 
@@ -29,7 +29,7 @@ public static partial class Parser
                         throw new InvalidOperationException($"Invalid parm given to {StringTokens[i]}");
                     string[] Parms = GroupParms(string.Join("", StringTokens.ToArray().Skip(i + 2).Take(IndexOfEndParms - 1)));
 
-                    var GetTokenOperation = ValueContainer.GetContainerValue(typeof(TokenOperation), StringTokens[i]);
+                    var GetTokenOperation = ValueContainerAttribute.GetContainerValue(typeof(TokenOperation), StringTokens[i]);
                     if (GetTokenOperation is (_, null))
                         throw new Exception($"{string.Join("", StringTokens)}  : Invalid TokenOperation {StringTokens[i]}");
 
@@ -66,7 +66,7 @@ public static partial class Parser
                     if (GetTokenType.haveNext)
                     {
 
-                        var GetTokenOperation = ValueContainer.GetContainerValue(typeof(TokenOperation), StringTokens[i]);
+                        var GetTokenOperation = ValueContainerAttribute.GetContainerValue(typeof(TokenOperation), StringTokens[i]);
                         if (GetTokenOperation is (_, null))
                             throw new Exception($"{string.Join("", StringTokens)}  : Invalid TokenOperation {StringTokens[i]}");
 

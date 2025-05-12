@@ -2,19 +2,20 @@
 
 public partial class Evaluator
 {
-    public readonly List<Token> OptimizedTokens;
+    private  List<Token> _tokens;
+    public IReadOnlyList<Token> OptimizedTokens => _tokens;
     private string StringInput;
     public Evaluator(string Input)
     {
        var splitTokens =  Tokenizer.Tokenize(StringInput = Input);
-       OptimizedTokens = Parser.Parse(splitTokens);
+       _tokens = Parser.Parse(splitTokens);
     }
 
     
 
     public double Evaluate()
     {
-        var tokenClones = OptimizedTokens.Select(token => token.New()).ToList();
+        var tokenClones = _tokens.Select(token => token.New()).ToList();
         if (tokenClones.Count > 2)
         {
           
@@ -69,21 +70,21 @@ public partial class Evaluator
             {
                 throw new Exception("Invalid Function Call");
             }
-            var FuncMata = (FuncMata)typeof(TokenOperation).GetField(Enum.GetName(Function.TokenOperation)).GetCustomAttribute<FuncMata>(true);
+            var FuncMata = (FuncMataAttribute)typeof(TokenOperation).GetField(Enum.GetName(Function.TokenOperation)).GetCustomAttribute<FuncMataAttribute>(true);
             if (FuncMata == null)
                 throw new Exception($"Unable to Find mate for {funcd.FunctionName}");
-            MethodInfo func = FuncMata.Type.GetMethods().Where(x=>x.Name == FuncMata.Name && x.GetParameters().Length== funcd.PARMS?.Length).FirstOrDefault();
+            MethodInfo func = FuncMata.Type.GetMethods().Where(x=>x.Name == FuncMata.Name && x.GetParameters().Length== funcd.parms?.Length).FirstOrDefault();
             if (func == null)
                 throw new Exception($"Method was not resolved [Parameters Missed Match/Count,Invalid FunctionName] :: {funcd.FunctionName}");
             int parmleng = 0;
             object[] parms = new object[parmleng=func.GetParameters().Count()];
-            if(parmleng!= funcd.PARMS.Count())
+            if(parmleng!= funcd.parms.Count())
             {
-                throw new ArgumentException($"Parameters count missed match. was given {funcd.PARMS.Count()} but expected {parmleng}.");
+                throw new ArgumentException($"Parameters count missed match. was given {funcd.parms.Count()} but expected {parmleng}.");
             }
             for (int i = 0; i < func.GetParameters().Count(); i++)
             {
-                var splitTokens = Tokenizer.Tokenize(funcd.PARMS[i]);
+                var splitTokens = Tokenizer.Tokenize(funcd.parms[i]);
                 var Tokens = Parser.Parse(splitTokens);
                 while(Tokens.Any(x=>x.TokenType is TokenType.Function))
                 {

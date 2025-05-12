@@ -1,13 +1,13 @@
 ﻿public enum TokenType
 {
     None,
-    [ValueContainer(true, "Pow", "Add", "Subtract", "Multiply", "Divide", "Abs", "Floor", "Ceiling", "Round", "Max", "Min", "Sqrt", "Log", "Log10", "Exp", "Sin", "Cos", "Tan", "Truncate","Print")]
+    [ValueContainerAttribute(true, "Pow", "Add", "Subtract", "Multiply", "Divide", "Abs", "Floor", "Ceiling", "Round", "Max", "Min", "Sqrt", "Log", "Log10", "Exp", "Sin", "Cos", "Tan", "Truncate","Print")]
     Function,
     Number,
-    [ValueContainer(true,"+","-","/","*","^","&","<",">","|","%")]
+    [ValueContainerAttribute(true,"+","-","/","*","^","&","<",">","|","%")]
     Operation,
-    [ValueContainer(false, "(")]
+    [ValueContainerAttribute(false, "(")]
     ParenthesisOpen,
-    [ValueContainer(false, ")")]
+    [ValueContainerAttribute(false, ")")]
     ParenthesisClose
 }

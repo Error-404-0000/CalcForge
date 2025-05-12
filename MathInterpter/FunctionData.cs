@@ -1,1 +1,1 @@
-﻿public record FunctionData(string FunctionName, string[] PARMS);
+﻿public record FunctionData(string FunctionName, string[] parms);

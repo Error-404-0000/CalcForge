@@ -1,4 +1,4 @@
-﻿public class ValueContainer(bool HaveNext=false,params string[] Values) : Attribute
+﻿public class ValueContainerAttribute(bool HaveNext=false,params string[] Values) : Attribute
 {
     public bool HaveNext { get; } = HaveNext;
     public string[] Values { get; } = Values;
@@ -8,7 +8,7 @@
         {
             foreach (var Fields in EnumType.GetFields())
             {
-                ValueContainer valueContainers = (ValueContainer)Fields.GetCustomAttributes(typeof(ValueContainer), true).FirstOrDefault(x=> ((ValueContainer)x).Values.Contains(Value));
+                ValueContainerAttribute valueContainers = (ValueContainerAttribute)Fields.GetCustomAttributes(typeof(ValueContainerAttribute), true).FirstOrDefault(x=> ((ValueContainerAttribute)x).Values.Contains(Value));
                 if(valueContainers != null)
                     return (valueContainers.HaveNext,Fields.Name);
             

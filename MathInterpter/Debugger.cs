@@ -17,7 +17,7 @@
                     if (token.TokenType == TokenType.Function)
                     {
                         var func = token.Value as FunctionData;
-                        Console.WriteLine($"{prefix}[Function] {func.FunctionName} ({string.Join(", ", func.PARMS)})");
+                        Console.WriteLine($"{prefix}[Function] {func.FunctionName} ({string.Join(", ", func.parms)})");
                     }
                     else
                     {

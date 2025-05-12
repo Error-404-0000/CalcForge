@@ -1,101 +1,101 @@
 ﻿public enum TokenOperation
 {
     None = 0,
-    [ValueContainer(false,"+")]
+    [ValueContainerAttribute(false,"+")]
     AddOperation,
-    [ValueContainer(false,"-")]
+    [ValueContainerAttribute(false,"-")]
     SubtractOperation,
-    [ValueContainer(false, "*")]
+    [ValueContainerAttribute(false, "*")]
     MultiplyOperation,
-    [ValueContainer(false, "/")]
+    [ValueContainerAttribute(false, "/")]
     DivideOperation,
-    [ValueContainer(false, "^")]
+    [ValueContainerAttribute(false, "^")]
     PowerOperation,
-    [ValueContainer(false,"<")]
+    [ValueContainerAttribute(false,"<")]
     ShiftLeftOperation,
-    [ValueContainer(false, ">")]
+    [ValueContainerAttribute(false, ">")]
     ShiftRightOperation,
-    [ValueContainer(false, "|")]
+    [ValueContainerAttribute(false, "|")]
     OROperation,
-    [ValueContainer(false, "&")]
+    [ValueContainerAttribute(false, "&")]
     ANDOperation,
-    [ValueContainer(false, "%")]
+    [ValueContainerAttribute(false, "%")]
     Reminder,
-    [ValueContainer(false, "Pow")]
-    [FuncMata(typeof(Math), nameof(Math.Pow))]
+    [ValueContainerAttribute(false, "Pow")]
+    [FuncMataAttribute(typeof(Math), nameof(Math.Pow))]
     Pow,
 
-    [ValueContainer(false, "Abs")]
-    [FuncMata(typeof(Math), nameof(Math.Abs))]
+    [ValueContainerAttribute(false, "Abs")]
+    [FuncMataAttribute(typeof(Math), nameof(Math.Abs))]
     Abs,
 
-    [ValueContainer(false, "Sin")]
-    [FuncMata(typeof(Math), nameof(Math.Sin))]
+    [ValueContainerAttribute(false, "Sin")]
+    [FuncMataAttribute(typeof(Math), nameof(Math.Sin))]
     Sin,
 
-    [ValueContainer(false, "Cos")]
-    [FuncMata(typeof(Math), nameof(Math.Cos))]
+    [ValueContainerAttribute(false, "Cos")]
+    [FuncMataAttribute(typeof(Math), nameof(Math.Cos))]
     Cos,
 
-    [ValueContainer(false, "Tan")]
-    [FuncMata(typeof(Math), nameof(Math.Tan))]
+    [ValueContainerAttribute(false, "Tan")]
+    [FuncMataAttribute(typeof(Math), nameof(Math.Tan))]
     Tan,
 
-    [ValueContainer(false, "Sqrt")]
-    [FuncMata(typeof(Math), nameof(Math.Sqrt))]
+    [ValueContainerAttribute(false, "Sqrt")]
+    [FuncMataAttribute(typeof(Math), nameof(Math.Sqrt))]
     Sqrt,
 
-    [ValueContainer(false, "Log")]
-    [FuncMata(typeof(Math), nameof(Math.Log))]
+    [ValueContainerAttribute(false, "Log")]
+    [FuncMataAttribute(typeof(Math), nameof(Math.Log))]
     Log,
-    [ValueContainer(false, "Print")]
-    [FuncMata(typeof(Math), nameof(Math.Print))]
+    [ValueContainerAttribute(false, "Print")]
+    [FuncMataAttribute(typeof(Math), nameof(Math.Print))]
     Print,
-    [ValueContainer(false, "Log10")]
-    [FuncMata(typeof(Math), nameof(Math.Log10))]
+    [ValueContainerAttribute(false, "Log10")]
+    [FuncMataAttribute(typeof(Math), nameof(Math.Log10))]
     Log10,
 
-    [ValueContainer(false, "Exp")]
-    [FuncMata(typeof(Math), nameof(Math.Exp))]
+    [ValueContainerAttribute(false, "Exp")]
+    [FuncMataAttribute(typeof(Math), nameof(Math.Exp))]
     Exp,
 
-    [ValueContainer(false, "Floor")]
-    [FuncMata(typeof(Math), nameof(Math.Floor))]
+    [ValueContainerAttribute(false, "Floor")]
+    [FuncMataAttribute(typeof(Math), nameof(Math.Floor))]
     Floor,
 
-    [ValueContainer(false, "Ceiling")]
-    [FuncMata(typeof(Math), nameof(Math.Ceiling))]
+    [ValueContainerAttribute(false, "Ceiling")]
+    [FuncMataAttribute(typeof(Math), nameof(Math.Ceiling))]
     Ceiling,
 
-    [ValueContainer(false, "Round")]
-    [FuncMata(typeof(Math), nameof(Math.Round))]
+    [ValueContainerAttribute(false, "Round")]
+    [FuncMataAttribute(typeof(Math), nameof(Math.Round))]
     Round,
 
-    [ValueContainer(false, "Truncate")]
-    [FuncMata(typeof(Math), nameof(Math.Truncate))]
+    [ValueContainerAttribute(false, "Truncate")]
+    [FuncMataAttribute(typeof(Math), nameof(Math.Truncate))]
     Truncate,
 
-    [ValueContainer(false, "Max")]
-    [FuncMata(typeof(Math), nameof(Math.Max))]
+    [ValueContainerAttribute(false, "Max")]
+    [FuncMataAttribute(typeof(Math), nameof(Math.Max))]
     Max,
 
-    [ValueContainer(false, "Min")]
-    [FuncMata(typeof(Math), nameof(Math.Min))]
+    [ValueContainerAttribute(false, "Min")]
+    [FuncMataAttribute(typeof(Math), nameof(Math.Min))]
     Min,
 
-    [ValueContainer(false, "Add")]
-    [FuncMata(typeof(Math), nameof(Math.Add))]
+    [ValueContainerAttribute(false, "Add")]
+    [FuncMataAttribute(typeof(Math), nameof(Math.Add))]
     Add,
 
-    [ValueContainer(false, "Subtract")]
-    [FuncMata(typeof(Math), nameof(Math.Subtract))]
+    [ValueContainerAttribute(false, "Subtract")]
+    [FuncMataAttribute(typeof(Math), nameof(Math.Subtract))]
     Subtract,
 
-    [ValueContainer(false, "Multiply")]
-    [FuncMata(typeof(Math), nameof(Math.Multiply))]
+    [ValueContainerAttribute(false, "Multiply")]
+    [FuncMataAttribute(typeof(Math), nameof(Math.Multiply))]
     Multiply,
 
-    [ValueContainer(false, "Divide")]
-    [FuncMata(typeof(Math), nameof(Math.Divide))]
+    [ValueContainerAttribute(false, "Divide")]
+    [FuncMataAttribute(typeof(Math), nameof(Math.Divide))]
     Divide
 }

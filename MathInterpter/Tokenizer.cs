@@ -90,9 +90,8 @@ public static class Tokenizer {
     }
     public static bool isChar(char ch)
     {
-        if (ch is >= 'a' and <= 'z' || ch is >= 'A' and <= 'Z')
-            return true;
-        return false;
+       
+        return ch is >= 'a' and <= 'z' || ch is >= 'A' and <= 'Z';
     }
     public static bool IsNumber(string numstr)
     {
@@ -115,8 +114,7 @@ public static class Tokenizer {
     }
     private static bool IsNumber(char num)
     {
-        if (num >= '0' && num <= '9')
-            return true;
-        return false;
+       
+        return num >= '0' && num <= '9';
     }
 }
