@@ -19,7 +19,11 @@ Evtor is a lightweight, extensible C# library for parsing and evaluating complex
 
 1. Clone or include the `Evtor` source files in your project.
 2. Target **.NET 8.0** or later.
+3. Add `using` directives:
 
+   ```csharp
+   using YourNamespace;  // Where Evtor classes live
+   ```
 
 ---
 
