@@ -22,7 +22,7 @@ Evtor is a lightweight, extensible C# library for parsing and evaluating complex
 3. Add `using` directives:
 
    ```csharp
-   using YourNamespace;  // Where Evtor classes live
+   using CalcForge;  // Where Evtor classes live
    ```
 
 ---
