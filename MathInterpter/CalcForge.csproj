@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Platforms>AnyCPU;x64</Platforms>
-    <RootNamespace>MathInterpreter</RootNamespace>
+    <RootNamespace>CalcForge</RootNamespace>
   </PropertyGroup>
 
 </Project>
