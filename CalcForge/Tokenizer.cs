@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿namespace CalcForge;
+using System.Text;
 
 public static class Tokenizer {
     public static string[] Tokenize(string Input)

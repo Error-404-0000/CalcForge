@@ -7,6 +7,20 @@
     <Nullable>enable</Nullable>
     <Platforms>AnyCPU;x64</Platforms>
     <RootNamespace>CalcForge</RootNamespace>
+	 <TargetFramework>net8.0</TargetFramework> 
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
+    <PackageId>CalcForge</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Error-404-0000</Authors>
+    <Company>ErrorSoft</Company>
+    <Description>Advanced expression evaluation engine with full AST, constant folding, and function reflection.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Error-404-0000/CalcForge</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Error-404-0000/CalcForge</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
 </Project>

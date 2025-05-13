@@ -1,4 +1,5 @@
-﻿public record Token(TokenType TokenType,TokenOperation TokenOperation,TokenTree TokenTree,object Value)
+﻿namespace CalcForge;
+public record Token(TokenType TokenType,TokenOperation TokenOperation,TokenTree TokenTree,object Value)
 {
     public Token New()
     {
@@ -10,7 +11,7 @@
         );
     }
 
-    private dynamic CloneValue(dynamic value)
+    private dynamic CloneValue(object value)
     {
         if (value is List<Token> tokenList)
         {

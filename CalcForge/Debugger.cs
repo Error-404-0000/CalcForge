@@ -1,5 +1,6 @@
-﻿
-    public static class Debugger
+﻿namespace CalcForge;
+
+public static class Debugger
     {
         public static void WriteTree(IEnumerable<Token> tokens, string indent = "", bool isLast = true)
         {
@@ -17,7 +18,7 @@
                     if (token.TokenType == TokenType.Function)
                     {
                         var func = token.Value as FunctionData;
-                        Console.WriteLine($"{prefix}[Function] {func.FunctionName} ({string.Join(", ", func.parms)})");
+                        Console.WriteLine($"{prefix}[Function] {func.FunctionName} ({string.Join(", ", func.@params)})");
                     }
                     else
                     {

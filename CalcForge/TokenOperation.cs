@@ -1,4 +1,6 @@
-﻿public enum TokenOperation
+﻿using CalcForge;
+namespace CalcForge;
+public enum TokenOperation
 {
     None = 0,
     [ValueContainerAttribute(false,"+")]

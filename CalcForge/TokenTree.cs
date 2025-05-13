@@ -1,4 +1,5 @@
-﻿public enum TokenTree
+﻿namespace CalcForge;
+public enum TokenTree
 {
     Single,
     Group

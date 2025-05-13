@@ -1,4 +1,5 @@
 ﻿
+using CalcForge;
 // Bitwise and nested logic
 Console.WriteLine(new Evaluator("(15 > 1) & 7").Evaluate());       // 7
 Console.WriteLine(new Evaluator("(3 < 2) | (1 + 1)").Evaluate());   // 2

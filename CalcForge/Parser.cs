@@ -1,4 +1,5 @@
-﻿
+﻿namespace CalcForge;
+
 public static partial class Parser
 {
     public static List<Token> Parse(string[] StringTokens)

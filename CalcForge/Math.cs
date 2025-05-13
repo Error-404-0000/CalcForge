@@ -1,4 +1,7 @@
-﻿public static class Math
+﻿namespace CalcForge;
+
+//created so the risk of getting a Param miss count/wrong type is very long to System.Math
+public static class Math
 {
   
     public static decimal Truncate(decimal value)

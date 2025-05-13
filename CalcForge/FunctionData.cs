@@ -1,1 +1,4 @@
-﻿public record FunctionData(string FunctionName, string[] parms);
+﻿namespace CalcForge;
+
+// holds a function token
+public record FunctionData(string FunctionName, string[] @params);

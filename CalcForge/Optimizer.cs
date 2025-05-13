@@ -1,4 +1,4 @@
-﻿
+﻿namespace CalcForge;
     public static class Optimizer
     {
     

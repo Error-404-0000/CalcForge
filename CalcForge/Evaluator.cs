@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+namespace CalcForge;
 
 public partial class Evaluator
 {
@@ -73,18 +74,18 @@ public partial class Evaluator
             var FuncMata = (FuncMataAttribute)typeof(TokenOperation).GetField(Enum.GetName(Function.TokenOperation)).GetCustomAttribute<FuncMataAttribute>(true);
             if (FuncMata == null)
                 throw new Exception($"Unable to Find mate for {funcd.FunctionName}");
-            MethodInfo func = FuncMata.Type.GetMethods().Where(x=>x.Name == FuncMata.Name && x.GetParameters().Length== funcd.parms?.Length).FirstOrDefault();
+            MethodInfo func = FuncMata.Type.GetMethods().Where(x=>x.Name == FuncMata.Name && x.GetParameters().Length== funcd.@params?.Length).FirstOrDefault();
             if (func == null)
                 throw new Exception($"Method was not resolved [Parameters Missed Match/Count,Invalid FunctionName] :: {funcd.FunctionName}");
             int parmleng = 0;
             object[] parms = new object[parmleng=func.GetParameters().Count()];
-            if(parmleng!= funcd.parms.Count())
+            if(parmleng!= funcd.@params.Count())
             {
-                throw new ArgumentException($"Parameters count missed match. was given {funcd.parms.Count()} but expected {parmleng}.");
+                throw new ArgumentException($"Parameters count missed match. was given {funcd.@params.Count()} but expected {parmleng}.");
             }
             for (int i = 0; i < func.GetParameters().Count(); i++)
             {
-                var splitTokens = Tokenizer.Tokenize(funcd.parms[i]);
+                var splitTokens = Tokenizer.Tokenize(funcd.@params[i]);
                 var Tokens = Parser.Parse(splitTokens);
                 while(Tokens.Any(x=>x.TokenType is TokenType.Function))
                 {
