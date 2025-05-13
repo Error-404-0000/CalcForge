@@ -12,6 +12,7 @@ Evtor is a lightweight, extensible C# library for parsing and evaluating complex
 * **Built-in functions**: `Add`, `Subtract`, `Multiply`, `Divide`, `Pow`, `Abs`, `Floor`, `Ceiling`, `Round`, `Max`, `Min`, `Sqrt`, `Log`, `Log10`, `Exp`, `Sin`, `Cos`, `Tan`, `Truncate`, `Print`.
 * **Token optimization**: constant folding (`0+X`, `X*1`, `(2+3+4)`) and group simplification.
 * **Tree visualization**: pretty-print tokens/groups with `WriteTree` or raw tokens with `WriteTokens`.
+* **Assembly compilation**: compile token trees into MASM-style `.asm` using register reuse and opcode profiles.
 
 ---
 
@@ -85,6 +86,66 @@ Console.WriteLine(new Evaluator("Sin(90) + Cos(0)").Evaluate());
 
 // Deep nesting
 Console.WriteLine(new Evaluator("Add(1, Add(2, Add(3, Add(4, Add(5, 6)))))").Evaluate());
+```
+
+---
+
+## 🛠️ Compilation Support (`Evtor → Assembly / Binary`)
+
+Evtor now supports compiling expressions into **low-level instructions** for virtual machines or real assemblers (like MASM). This enables use cases like bytecode execution, JIT, or direct `.asm` file generation.
+
+---
+
+### ✨ Features
+
+* 🔁 **Register reuse**: Emits code using a limited, reusable MASM-compatible register set (`eax`, `ebx`, … `r15`)
+* 🧠 **Live register tracking**: Automatically frees unused registers to avoid overflow
+* 🧾 **Profile-based opcode mapping**: Attach opcodes to operations via `[Emit("MASM64", "add", 0x02)]`
+* 💬 **Assembly output**: Generate `.asm` source files or get instructions as a string
+* 🧱 **Binary backend ready**: Compatible with future bytecode or VM integrations
+
+---
+
+### 📘 Example: Compile to MASM-style Assembly
+
+```csharp
+var evaluator = new Evaluator("2+ 3*4");
+var tokens = evaluator.Tokens;
+
+string asm = Compile.AsString(tokens, "MASM64");
+Console.WriteLine(asm);
+```
+
+**Output:**
+
+```
+mul 3 4
+add 2 eax
+```
+
+---
+
+### 📁 Emit to File
+
+```csharp
+Compile.BuildFile(tokens, "MASM64", "asm", "output/instruction");
+```
+
+Creates:
+
+```
+output/instruction.asm
+```
+
+---
+
+### 🧩 Emit Attribute Format
+
+Attach opcode and instruction names to operations via attributes:
+
+```csharp
+[Emit("MASM64", "add", 0x02)]
+AddOperation,
 ```
 
 ---
