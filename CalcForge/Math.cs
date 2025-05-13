@@ -1,6 +1,6 @@
 ﻿namespace CalcForge;
 
-//created so the risk of getting a Param miss count/wrong type is very long to System.Math
+//created so the risk of getting a Param miss count/wrong type is very low to System.Math
 public static class Math
 {
   
