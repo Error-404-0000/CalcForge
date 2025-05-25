@@ -1,6 +1,10 @@
-﻿namespace CalcForge;
-public record Token(TokenType TokenType,TokenOperation TokenOperation,TokenTree TokenTree,object Value)
+﻿using CacheLily;
+
+namespace CalcForge.TokenObjects;
+public record Token(TokenType TokenType,TokenOperation TokenOperation,TokenTree TokenTree,object Value):ICacheable
 {
+    public int CacheCode { get ; set ; }
+
     public Token New()
     {
         return new Token(

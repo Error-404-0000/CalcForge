@@ -1,4 +1,6 @@
-﻿namespace CalcForge;
+﻿using CalcForge.TokenObjects;
+
+namespace CalcForge.Optimizer;
     public static class Optimizer
     {
     
@@ -22,7 +24,7 @@
                     tokens.RemoveRange(tokenCount - 2, 2);
                 }
                 ////+0
-                //else  if (secondLastToken.TokenType == TokenType.Operation &&
+                //else  If (secondLastToken.TokenType == TokenType.Operation &&
                 //    (lastToken.TokenOperation == TokenOperation.AddOperation ||
                 //     lastToken.TokenOperation == TokenOperation.SubtractOperation) &&
                 //    lastToken.TokenType == TokenType.Number &&
@@ -69,7 +71,7 @@
             if (optimizedInner.Count == 1 && optimizedInner[0].TokenTree == TokenTree.Single)
                 return optimizedInner[0];
 
-            // Re-wrap if still a group
+            // Re-wrap If still a group
             return new Token(
                 TokenType.None,
                 TokenOperation.None,

@@ -2,12 +2,11 @@
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Platforms>AnyCPU;x64</Platforms>
     <RootNamespace>CalcForge</RootNamespace>
-	 <TargetFramework>net8.0</TargetFramework> 
+	 <TargetFramework>net9.0</TargetFramework> 
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 
     <PackageId>CalcForge</PackageId>
@@ -22,5 +21,11 @@
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="CacheLily">
+      <HintPath>..\..\CacheLily\CacheLily\bin\Release\net9.0\net9.0\CacheLily.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 
 </Project>

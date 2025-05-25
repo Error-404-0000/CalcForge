@@ -1,4 +1,7 @@
-﻿namespace CalcForge;
+﻿using CalcForge.Func;
+using CalcForge.TokenObjects;
+
+namespace CalcForge.Debugger;
 
 public static class Debugger
     {

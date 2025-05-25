@@ -1,4 +1,4 @@
-﻿namespace CalcForge;
+﻿namespace CalcForge.Attributes;
 
 [AttributeUsage(AttributeTargets.Field)]
 //this tells the parser which method to use and where it is

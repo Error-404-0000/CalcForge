@@ -1,9 +1,15 @@
-﻿namespace CalcForge;
+﻿using CalcForge.Attributes;
+using CalcForge.Func;
+using CalcForge.Tokenilzer;
+using CalcForge.TokenObjects;
+using CacheLily;
+namespace CalcForge.Parser;
 
 public static partial class Parser
 {
     public static List<Token> Parse(string[] StringTokens)
     {
+
         List<Token> tokens = new List<Token>();
         for (int i = 0; i < StringTokens.Length; i++)
         {
@@ -19,7 +25,8 @@ public static partial class Parser
                     throw new Exception($"{string.Join("", StringTokens)}  : Invalid TokenType '{StringTokens[i]}'");
 
 
-                if (Tokenizer.IsFunctionName(StringTokens[i]) && (TokenType)Enum.Parse(typeof(TokenType), GetTokenType.Value) is not TokenType.Function)
+                if (Tokenizer.IsFunctionName(StringTokens[i]) && (TokenType)Enum.Parse(typeof(TokenType), GetTokenType.Value)
+                    is not (TokenType.Function or TokenType.Conditions))
                 {
                     throw new Exception($"Invalid FunctionName {StringTokens[i]}");
                 }
@@ -42,6 +49,11 @@ public static partial class Parser
 
 
                 }
+
+
+
+
+
                 else if ((TokenType)Enum.Parse(typeof(TokenType), GetTokenType.Value) is TokenType.ParenthesisOpen)
                 {
                     var EndParenthesis = FindOpenedParenthesisEnd(StringTokens.Skip(i).ToArray());
@@ -51,13 +63,13 @@ public static partial class Parser
                     var NewGroup = Parse(GroupPart);
                     //IF GROUP COUNT IS 0 ,LET JUST ADD IT FLAT DIRECTLY
 
-                    tokens?.Add(Optimizer.CollapseGroupIfPossible(Optimizer.OptimizeGroup(NewGroup)));
+                    tokens?.Add(Optimizer.Optimizer.CollapseGroupIfPossible(Optimizer.Optimizer.OptimizeGroup(NewGroup)));
                     i += EndParenthesis;
 
                 }
                 else if ((TokenType)Enum.Parse(typeof(TokenType), GetTokenType.Value) is TokenType.ParenthesisClose)
                 {
-                    // This should never happen if there is already an open parenthesis
+                    // This should never happen If there is already an open parenthesis
                     throw new InvalidOperationException($"Unexpected closing parenthesis at position {i} in the input: {StringTokens[i]}");
                 }
 
@@ -113,15 +125,15 @@ public static partial class Parser
                     if (tokens[TokenCount - 2].TokenOperation is TokenOperation.MultiplyOperation)
                     {
                         // for 0*100 or 100*0 or any eq based on 0 =remove the whole part            <<0>> = 0 ,<<0000>> = 0;
-                        if ((tokens[TokenCount - 1] is Token v1 && v1.TokenType is TokenType.Number && Convert.ToDouble(v1.Value) == 0)
-                        || (tokens[TokenCount - 3] is Token v2 && v2.TokenType is TokenType.Number && Convert.ToDouble(v2.Value) == 0))
+                        if (tokens[TokenCount - 1] is Token v1 && v1.TokenType is TokenType.Number && Convert.ToDouble(v1.Value) == 0
+                        || tokens[TokenCount - 3] is Token v2 && v2.TokenType is TokenType.Number && Convert.ToDouble(v2.Value) == 0)
                         {
                             tokens.RemoveRange(TokenCount - 3, 3);
                             tokens.Add(new Token(TokenType.Number, TokenOperation.None, TokenTree.Single, 0));
 
                         }
-                        else if ((tokens[TokenCount - 1] is Token v11 && v11.TokenType is TokenType.Number && Convert.ToDouble(v11.Value) == 1)
-                         || (tokens[TokenCount - 3] is Token v22 && v22.TokenType is TokenType.Number && Convert.ToDouble(v22.Value) == 2))
+                        else if (tokens[TokenCount - 1] is Token v11 && v11.TokenType is TokenType.Number && Convert.ToDouble(v11.Value) == 1
+                         )
                         {
                             tokens.RemoveRange(TokenCount - 2, 2);
 
@@ -131,7 +143,7 @@ public static partial class Parser
                     }
                 }
             }
-            Optimizer.OptimizeLeftZeroAddSub(tokens??[]);
+            Optimizer.Optimizer.OptimizeLeftZeroAddSub(tokens ?? []);
 
 
         }
@@ -153,9 +165,10 @@ public static partial class Parser
         }
         return tokens;
     }
-   
+  
 
-    
+
+
 
     public static string[] GroupParms(string value)
     {

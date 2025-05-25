@@ -1,9 +1,10 @@
-﻿namespace CalcForge;
+﻿namespace CalcForge.Tokenilzer;
 using System.Text;
 
 public static class Tokenizer {
     public static string[] Tokenize(string Input)
     {
+        Input = Input.Replace("\r\n","");
         List<string> stringTokens = new List<string>();
         bool isCurrentlyHoldingaNumber = false;
         StringBuilder currentNumberGroup = new();

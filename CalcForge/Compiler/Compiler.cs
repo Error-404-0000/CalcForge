@@ -1,10 +1,6 @@
-﻿namespace CalcForge.Compiler;
+﻿using CalcForge.TokenObjects;
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
+namespace CalcForge.Compiler;
 
 public static class Compile
 {
@@ -89,10 +85,25 @@ public static class Compile
             }
 
             if (regPool.Count == 0)
-                throw new InvalidOperationException("Register pool exhausted (more than 256 live values). Consider implementing a proper register allocator.");
+                throw new InvalidOperationException("Register pool exhausted. Consider implementing a smarter allocator.");
 
             string resultReg = regPool.Pop();
-            output.Add($"{emitAttr.Name} {string.Join(" ", operands)}");
+
+            // Emit valid MASM
+            if (operands.Count == 2)
+            {
+                output.Add($"mov {resultReg}, {operands[0]}");
+                output.Add($"{emitAttr.Name} {resultReg}, {operands[1]}");
+            }
+            else if (operands.Count == 1)
+            {
+                output.Add($"{emitAttr.Name} {resultReg}, {operands[0]}");
+            }
+            else
+            {
+                output.Add($"{emitAttr.Name} {string.Join(", ", operands)}");
+            }
+
             liveRegs.Add(resultReg);
 
             if (leftOp != null && liveRegs.Remove(leftOp))
