@@ -13,6 +13,7 @@ Evtor is a lightweight, extensible C# library for parsing and evaluating complex
 * **Token optimization**: constant folding (`0+X`, `X*1`, `(2+3+4)`) and group simplification.
 * **Tree visualization**: pretty-print tokens/groups with `WriteTree` or raw tokens with `WriteTokens`.
 * **Assembly compilation**: compile token trees into MASM-style `.asm` using register reuse and opcode profiles.
+* **Unit suffix parsing**: numbers with `mm`, `cm`, `m`, `in`, or `ft` are automatically converted.
 
 ---
 
@@ -86,6 +87,9 @@ Console.WriteLine(new Evaluator("Sin(90) + Cos(0)").Evaluate());
 
 // Deep nesting
 Console.WriteLine(new Evaluator("Add(1, Add(2, Add(3, Add(4, Add(5, 6)))))").Evaluate());
+
+// Numbers with units
+Console.WriteLine(new Evaluator("28mm * 2ft").Evaluate()); // 17068.8
 ```
 
 ---

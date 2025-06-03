@@ -2,6 +2,7 @@
 using CalcForge.Func;
 using CalcForge.Tokenilzer;
 using CalcForge.TokenObjects;
+using CalcForge;
 using System.Reflection;
 namespace CalcForge.Evalutor;
 
@@ -12,7 +13,8 @@ public partial class Evaluator
     private string StringInput;
     public Evaluator(string Input)
     {
-       var splitTokens =  Tokenizer.Tokenize(StringInput = Input);
+       StringInput = UnitParser.ConvertUnits(Input);
+       var splitTokens =  Tokenizer.Tokenize(StringInput);
        _tokens = Parser.Parser.Parse(splitTokens);
     }
 
