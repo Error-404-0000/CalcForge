@@ -11,7 +11,7 @@ Evtor is a lightweight, extensible C# library for parsing and evaluating complex
 * **Operator precedence**: `^` (power), `*` / `/`, `+` / `-`, bitwise `&`, `|`, shifts `<` `>`.
 * **Built-in functions**: `Add`, `Subtract`, `Multiply`, `Divide`, `Pow`, `Abs`, `Floor`, `Ceiling`, `Round`, `Max`, `Min`, `Sqrt`, `Log`, `Log10`, `Exp`, `Sin`, `Cos`, `Tan`, `Truncate`, `Print`.
 * **Token optimization**: constant folding (`0+X`, `X*1`, `(2+3+4)`) and group simplification.
-* **Tree visualization**: pretty-print tokens/groups with `WriteTree` or raw tokens with `WriteTokens`.
+* **Tree visualization**: pretty-print tokens/groups with `WriteTree` or raw tokens with `WriteTokens`. 
 * **Assembly compilation**: compile token trees into MASM-style `.asm` using register reuse and opcode profiles.
 * **Unit suffix parsing**: numbers with `mm`, `cm`, `m`, `in`, or `ft` are automatically converted.
 
