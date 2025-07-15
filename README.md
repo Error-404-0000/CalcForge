@@ -1,7 +1,7 @@
 # Evtor — Math Expression Evaluator
 
 Evtor is a lightweight, extensible C# library for parsing and evaluating complex mathematical expressions. It builds an internal token tree (AST-style), supports custom functions via reflection, and offers constant-folding optimizations.
-
+ 
 ---
 
 ## 🚀 Features
